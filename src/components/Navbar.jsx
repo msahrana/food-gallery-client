@@ -4,12 +4,12 @@ import logo from '../../public/logo.png'
 const Navbar = () => {
 
     const navItems = <>
-    <li><link to='/'>Home</link></li>
-    <li><link to='/availableFoods'>Available Foods</link></li>
-    <li><link to='/addFood'>Add Food</link></li>
-    <li><link to='/manageMyFoods'>Manage My Foods</link></li>
-    <li><link to='/myFoodRequest'>My Food Request</link></li>
-    <li><link to='/login'>Login</link></li>
+    <li><Link to='/'>Home</Link></li>
+    <li><Link to='/availableFoods'>Available Foods</Link></li>
+    <li><Link to='/addFood'>Add Food</Link></li>
+    <li><Link to='/manageMyFoods'>Manage My Foods</Link></li>
+    <li><Link to='/myFoodRequest'>My Food Request</Link></li>
+    <li><Link to='/login'>Login</Link></li>
     </>
 
   return (
@@ -38,7 +38,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl"><img src={logo} alt="" /></Link>
+        <img className='w-20 h-14 rounded-lg' src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

@@ -7,7 +7,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import MainLayout from './layout/MainLayout';
-
 import AvailableFoods from './pages/AvailableFoods';
 import ManageMyFoods from './pages/ManageMyFoods';
 import MyFoodRequest from './pages/MyFoodRequest';
@@ -15,6 +14,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ErrorPage from './error/ErrorPage';
 import Home from './pages/Home/Home';
+import AddFood from './pages/AddFood';
+import CheckOut from './pages/CheckOut';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/availableFoods',
-        element: <AvailableFoods></AvailableFoods>
+        element: <AvailableFoods></AvailableFoods>,
+        loader: ()=>fetch('http://localhost:5000/food')
       },
       {
         path: '/manageMyFoods',
@@ -45,6 +47,15 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/addFood',
+        element: <AddFood></AddFood>
+      },
+      {
+        path: '/food/:id',
+        element: <CheckOut></CheckOut>,
+        loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
       }
     ]
   },
