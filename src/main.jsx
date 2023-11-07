@@ -15,7 +15,7 @@ import Register from './pages/Register';
 import ErrorPage from './error/ErrorPage';
 import Home from './pages/Home/Home';
 import AddFood from './pages/AddFood';
-import CheckOut from './pages/CheckOut';
+import FoodDetails from './pages/FoodDetails';
 
 const router = createBrowserRouter([
   {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/food/:id',
-        element: <CheckOut></CheckOut>,
+        element: <FoodDetails></FoodDetails>,
         loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
       }
     ]
