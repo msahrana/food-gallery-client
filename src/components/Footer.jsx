@@ -1,4 +1,4 @@
-
+import logo from '../../public/logo.png'
 
 const Footer = () => {
     return (
@@ -8,6 +8,7 @@ const Footer = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
       <div className="col-span-full lg:col-span-1">
         <a className="flex-none text-xl font-semibold text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#" aria-label="Brand">Food Gallery</a>
+        <img className='w-40' src={logo} alt="" />
       </div>
       
 
