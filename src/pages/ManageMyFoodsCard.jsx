@@ -1,8 +1,68 @@
+import Swal from "sweetalert2";
 
 
-const ManageMyFoodsCard = ({ featureFood }) => {
+const ManageMyFoodsCard = ({ featureFood , reface, setReface}) => {
 
-    const { FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes } = featureFood;
+    const handleUpdate = _id =>{
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, confirm it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`http://localhost:5000/food/${_id}`,{
+          method: 'PATCH',
+          headers: {
+            'content-type':'application/json'
+          },
+          body: JSON.stringify({status: 'confirm'})
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          if (data.modifiedCount > 0){
+            Swal.fire('Updated!','Your booking has been updated.','success')
+            setReface(!reface)
+          }
+        })  
+          }
+        })
+      }
+
+    const handleDelete = _id => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+    
+            fetch(`http://localhost:5000/food/${_id}`,{
+                method: 'DELETE'
+            })
+            .then(res=> res.json())
+            .then(data=>{
+                console.log(data)
+                if (data.deletedCount>0) {
+                    Swal.fire("Deleted!", "Your Food Item deleted successfully.", "success");
+                    setReface(!reface)
+                }
+            })
+          }
+        });
+      };
+
+
+
+    const { _id, FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes } = featureFood;
 
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -26,8 +86,8 @@ const ManageMyFoodsCard = ({ featureFood }) => {
         <h2 className="font-semibold my-5">Pickup Location : {PickupLocation}</h2>
         <p className="mb-4">Additional Notes : {AdditionalNotes}</p>
         <div className="flex">
-        <button className="btn btn-secondary mr-44">Update</button>
-        <button className="btn btn-secondary">Delete</button>
+        <button onClick={()=> handleUpdate (_id)} className="btn btn-secondary mr-44">Update</button>
+        <button onClick={() => handleDelete(_id)} className="btn btn-secondary">Delete</button>
         </div>
       </div>
     </div>
