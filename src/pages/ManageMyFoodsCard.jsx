@@ -1,12 +1,9 @@
-import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const ManageMyFoodsCard = ({ reface, setReface}) => {
+const ManageMyFoodsCard = ({ featureFood, reface, setReface}) => {
 
-const featureFoods = useLoaderData()
-
-  const {_id, FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes} = featureFoods || {}
+  const {_id, FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes} = featureFood || {}
 
     const handleUpdate = _id =>{
         Swal.fire({
