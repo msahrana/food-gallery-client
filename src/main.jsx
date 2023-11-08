@@ -17,6 +17,7 @@ import Home from './pages/Home/Home';
 import AddFood from './pages/AddFood';
 import FoodDetails from './pages/FoodDetails';
 import AuthProvider from './provider/AuthProvider';
+import PrivateRoute from './private/PrivateRoute';
 // import CheckOut from './pages/CheckOut';
 
 const router = createBrowserRouter([
@@ -36,12 +37,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/manageMyFoods',
-        element: <ManageMyFoods></ManageMyFoods>,
+        element: <PrivateRoute><ManageMyFoods></ManageMyFoods></PrivateRoute>,
         loader: ()=>fetch('http://localhost:5000/food')
       },
       {
         path: '/myFoodRequest',
-        element: <MyFoodRequest></MyFoodRequest>
+        element: <PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>
       },
       {
         path: '/login',
@@ -53,18 +54,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/addFood',
-        element: <AddFood></AddFood>
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
       },
       {
         path: '/food/:_id',
-        element: <FoodDetails></FoodDetails>,
+        element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/food/${params._id}`)
       },
-      // {
-      //   path: '/checkout/:_id',
-      //   element: <CheckOut></CheckOut>,
-      //   loader: ({params}) => fetch(`http://localhost:5000/food/${params._id}`)
-      // }
     ]
   },
 ]);
