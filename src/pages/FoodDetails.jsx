@@ -1,7 +1,15 @@
+import { useLoaderData, useParams } from "react-router-dom";
 
 
 const FoodDetails = () => {
 
+  const FoodDetails = useLoaderData()
+  console.log(FoodDetails)
+
+  const {_id} = useParams()
+  console.log(_id)
+
+  const {FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes} = FoodDetails || {}
 
   return (
     <div>
@@ -11,7 +19,7 @@ const FoodDetails = () => {
           <a href="#">
             <img
               className="rounded-t-lg"
-              src=""
+              src={FoodImage}
               alt=""
             />
           </a>
