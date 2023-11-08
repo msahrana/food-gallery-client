@@ -17,6 +17,7 @@ import Home from './pages/Home/Home';
 import AddFood from './pages/AddFood';
 import FoodDetails from './pages/FoodDetails';
 import AuthProvider from './provider/AuthProvider';
+// import CheckOut from './pages/CheckOut';
 
 const router = createBrowserRouter([
   {
@@ -57,7 +58,12 @@ const router = createBrowserRouter([
         path: '/food/:_id',
         element: <FoodDetails></FoodDetails>,
         loader: ({params}) => fetch(`http://localhost:5000/food/${params._id}`)
-      }
+      },
+      // {
+      //   path: '/checkout/:_id',
+      //   element: <CheckOut></CheckOut>,
+      //   loader: ({params}) => fetch(`http://localhost:5000/food/${params._id}`)
+      // }
     ]
   },
 ]);

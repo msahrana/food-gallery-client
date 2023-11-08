@@ -7,7 +7,15 @@ import Swal from "sweetalert2";
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext)
+    const {createUser, googleLogin} = useContext(AuthContext)
+
+    const handleGoogleLogin = () =>{
+        googleLogin()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error=> console.error(error))
+    }
 
     const handleRegister = e =>{
         e.preventDefault()
@@ -69,6 +77,9 @@ const Register = () => {
             </div>
             
             <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up to your account</button>
+
+            <p className='text-center'>Or, Sign Up with</p>
+                    <button onClick={handleGoogleLogin} type='button' className='btn btn-circle mx-auto text-xl text-[#FF3811]'>G</button>
         
             <p className='my-4 text-center'>Already Registered? <Link className='text-blue-700 font-bold' to='/login'>Sign In</Link></p>
             </form>

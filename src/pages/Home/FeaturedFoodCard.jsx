@@ -18,7 +18,7 @@ const FeaturedFoodCard = ({ featureFood }) => {
         </a>
         <div className="flex justify-between mx-auto">
           <p className="mb-3 text-2xl font-semibold text-gray-700 dark:text-gray-400">Donar : {DonorName}</p>
-          <img className="rounded-full w-12 h-12 " src={DonorImage} alt="" />
+          <img className="rounded-full w-12 h-12" src={DonorImage} alt="" />
         </div>
         <div className="flex">
           <h1 className="font-semibold mr-4">Food Quantity : {FoodQuantity}</h1>
