@@ -26,7 +26,7 @@ const FoodDetails = () => {
     const requestFood = {name, quantity, donation, donar, requestDate, donarEmail, expireDate, location, notes, foodImage}
     console.log(requestFood)
 
-    fetch('http://localhost:5000/food',{
+    fetch('http://localhost:5000/request',{
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -39,7 +39,7 @@ const FoodDetails = () => {
         if (data.insertedId) {
             Swal.fire({
                 title: 'Success!',
-                text: 'New Food Added Successfully',
+                text: 'Food Request Successfully',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
@@ -84,152 +84,151 @@ const FoodDetails = () => {
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box">
                 <h3 className="font-bold text-2xl text-center">Request Food Item : </h3> 
-              <div className="md:flex gap-6 mb-6">
-                <div className="form-control md:w-1/2">
-                  <label className="label">
-                    <span className="label-text">Food Name</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="text" defaultValue={FoodName}
-                      name="name"
-                      placeholder="Enter Food name"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
+                <div className="md:flex gap-6 mb-6">
+                  <div className="form-control md:w-1/2">
+                    <label className="label">
+                      <span className="label-text">Food Name</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text" defaultValue={FoodName}
+                        name="name"
+                        placeholder="Enter Food name"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Food Quantity</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text" defaultValue={FoodQuantity}
+                        name="quantity"
+                        placeholder="Quantity"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Donation Money</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="number"
+                        name="donation"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
                 </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Food Quantity</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="text" defaultValue={FoodQuantity}
-                      name="quantity"
-                      placeholder="Quantity"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
+                <div className="md:flex gap-6 mb-6">
+                  <div className="form-control md:w-1/2">
+                    <label className="label">
+                      <span className="label-text">Donar Name</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text" defaultValue={DonorName}
+                        name="donar"
+                        placeholder="Food Donar"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control md:w-1/2">
+                    <label className="label">
+                      <span className="label-text">Donar Email</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="email" required
+                        name="donarEmail"
+                        placeholder="Donar Email"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
                 </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Donation Money</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="number"
-                      name="donation"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
+                <div className="md:flex gap-6 mb-6">
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Request Date</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="date"
+                        name="requestDate"
+                        placeholder="Request Date"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Expired Date</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="date" defaultValue={ExpiredDate}
+                        name="expireDate"
+                        placeholder="Expired Date"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div className="md:flex gap-6 mb-6">
-                <div className="form-control md:w-1/2">
-                  <label className="label">
-                    <span className="label-text">Donar Name</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="text" defaultValue={DonorName}
-                      name="donar"
-                      placeholder="Food Donar"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
+                <div className="md:flex gap-6 mb-6">
+                  <div className="form-control md:w-1/2">
+                    <label className="label">
+                      <span className="label-text">Pickup Location</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text" defaultValue={PickupLocation}
+                        name="location" required
+                        placeholder="Pickup Location"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Additional Notes</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text" required
+                        name="notes"
+                        placeholder="Additional Notes"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
                 </div>
-                <div className="form-control md:w-1/2">
-                  <label className="label">
-                    <span className="label-text">Donar Email</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="email" required
-                      name="donarEmail"
-                      placeholder="Donar Email"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
+                <div className="mb-6">
+                  <div className="form-control md:w-full">
+                    <label className="label">
+                      <span className="label-text">Food Image</span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text" defaultValue={FoodImage}
+                        name="foodImage"
+                        placeholder="Enter Food Image URL"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div className="md:flex gap-6 mb-6">
-                
-                
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Request Date</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="date"
-                      name="requestDate"
-                      placeholder="Request Date"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
-                </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Expired Date</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="date" defaultValue={ExpiredDate}
-                      name="expireDate"
-                      placeholder="Expired Date"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
-                </div>
-              </div>
-              <div className="md:flex gap-6 mb-6">
-                <div className="form-control md:w-1/2">
-                  <label className="label">
-                    <span className="label-text">Pickup Location</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="text" defaultValue={PickupLocation}
-                      name="location" required
-                      placeholder="Pickup Location"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
-                </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Additional Notes</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="text" required
-                      name="notes"
-                      placeholder="Additional Notes"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
-                </div>
-              </div>
-              <div className="mb-6">
-                <div className="form-control md:w-full">
-                  <label className="label">
-                    <span className="label-text">Food Image</span>
-                  </label>
-                  <label className="input-group">
-                    <input
-                      type="text" defaultValue={FoodImage}
-                      name="foodImage"
-                      placeholder="Enter Food Image URL"
-                      className="input input-bordered w-full"
-                    />
-                  </label>
-                </div>
-              </div>
                 <div className="modal-action">
-                  <form method="dialog"> 
-                  <button onClick={handleRequest} className="btn btn-secondary">Request</button>
+                <button onClick={handleRequest} className="btn btn-secondary mr-60" >Request</button>
+                  <form method="dialog">
+                    <button className="btn btn-secondary">Close</button>
                   </form>
-                </div>
+              </div>
               </div>
             </dialog>
           </div>
