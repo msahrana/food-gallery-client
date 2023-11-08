@@ -1,7 +1,13 @@
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const ManageMyFoodsCard = ({ featureFood , reface, setReface}) => {
+
+const featureFoods = useLoaderData()
+console.log(featureFoods)
+
+  const {_id, FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes} = featureFood || {}
 
     const handleUpdate = _id =>{
         Swal.fire({
@@ -14,7 +20,7 @@ const ManageMyFoodsCard = ({ featureFood , reface, setReface}) => {
           confirmButtonText: 'Yes, confirm it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/food/${_id}`,{
+            fetch(`http://localhost:5000/request/${_id}`,{
           method: 'PATCH',
           headers: {
             'content-type':'application/json'
@@ -45,7 +51,7 @@ const ManageMyFoodsCard = ({ featureFood , reface, setReface}) => {
         }).then((result) => {
           if (result.isConfirmed) {
     
-            fetch(`http://localhost:5000/food/${_id}`,{
+            fetch(`http://localhost:5000/request/${_id}`,{
                 method: 'DELETE'
             })
             .then(res=> res.json())
@@ -60,9 +66,6 @@ const ManageMyFoodsCard = ({ featureFood , reface, setReface}) => {
         });
       };
 
-
-
-    const { _id, FoodImage, FoodName, DonorName, DonorImage, PickupLocation,ExpiredDate, FoodQuantity,AdditionalNotes } = featureFood;
 
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -86,7 +89,7 @@ const ManageMyFoodsCard = ({ featureFood , reface, setReface}) => {
         <h2 className="font-semibold my-5">Pickup Location : {PickupLocation}</h2>
         <p className="mb-4">Additional Notes : {AdditionalNotes}</p>
         <div className="flex">
-        <button onClick={()=> handleUpdate (_id)} className="btn btn-secondary mr-44">Update</button>
+        <button onClick={()=> handleUpdate(_id)} className="btn btn-secondary mr-44">Update</button>
         <button onClick={() => handleDelete(_id)} className="btn btn-secondary">Delete</button>
         </div>
       </div>

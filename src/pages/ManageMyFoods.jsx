@@ -8,7 +8,7 @@ const ManageMyFoods = () => {
     const [reface, setReface] = useState(true)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/food')
+        fetch('http://localhost:5000/request')
         .then(res => res.json())
         .then(data => setFeaturedFood(data))
     },[])

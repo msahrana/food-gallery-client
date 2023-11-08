@@ -13,7 +13,7 @@ const FoodDetails = () => {
   const handleRequest = e =>{
     e.preventDefault();
     const name = e.target.name.value
-    const quantity = e.target.quantity.value
+    const quantity = e.target.quantity?.value
     const donar = e.target.donar.value
     const donarEmail = e.target.donarEmail.value
     const expireDate = e.target.expireDate.value
@@ -82,7 +82,7 @@ const FoodDetails = () => {
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <button className="btn btn-secondary" onClick={()=>document.getElementById('my_modal_1').showModal()}>Request</button>
             <dialog id="my_modal_1" className="modal">
-              <div className="modal-box">
+              <form onSubmit={handleRequest} className="modal-box">
                 <h3 className="font-bold text-2xl text-center">Request Food Item : </h3> 
                 <div className="md:flex gap-6 mb-6">
                   <div className="form-control md:w-1/2">
@@ -224,12 +224,12 @@ const FoodDetails = () => {
                   </div>
                 </div>
                 <div className="modal-action">
-                <button onClick={handleRequest} className="btn btn-secondary mr-60" >Request</button>
+                <button type="submit" className="btn btn-secondary mr-60" >Request</button>
                   <form method="dialog">
                     <button className="btn btn-secondary">Close</button>
                   </form>
               </div>
-              </div>
+              </form>
             </dialog>
           </div>
         </div>
