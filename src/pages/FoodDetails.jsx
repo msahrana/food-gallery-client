@@ -1,7 +1,6 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const FoodDetails = () => {
 
   const foodDetails = useLoaderData()
@@ -26,7 +25,7 @@ const FoodDetails = () => {
     const requestFood = {name, quantity, donation, donar, requestDate, donarEmail, expireDate, location, notes, foodImage}
     console.log(requestFood)
 
-    fetch('http://localhost:5000/request',{
+    fetch('https://food-gallery-server-mu.vercel.app/request',{
         method: 'POST',
         headers: {
             'content-type': 'application/json'

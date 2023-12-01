@@ -18,7 +18,7 @@ const AddFood = () => {
         const newFood = {name, quantity, donar, status, expireDate, location, notes, foodImage, donarImage}
         console.log(newFood)
 
-        fetch('http://localhost:5000/food',{
+        fetch('https://food-gallery-server-mu.vercel.app/food',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

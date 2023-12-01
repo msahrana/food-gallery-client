@@ -30,7 +30,7 @@ const Register = () => {
         .then(result =>{
             console.log(result.user)
             const user = {name, photoURL, email, password}
-            fetch('http://localhost:5000/user', {
+            fetch('https://food-gallery-server-mu.vercel.app/user', {
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'

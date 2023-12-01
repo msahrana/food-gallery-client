@@ -8,7 +8,7 @@ const ManageMyFoods = () => {
     const [reface, setReface] = useState(true)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/request')
+        fetch('https://food-gallery-server-mu.vercel.app/request')
         .then(res => res.json())
         .then(data => setFeaturedFood(data))
     },[])

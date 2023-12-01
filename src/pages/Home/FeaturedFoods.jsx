@@ -9,7 +9,7 @@ const FeaturedFoods = () => {
     const [featuredFood, setFeaturedFood] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/food')
+        fetch('https://food-gallery-server-mu.vercel.app/food')
         .then(res => res.json())
         .then(data => setFeaturedFood(data))
     },[])
